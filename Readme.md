@@ -5,6 +5,9 @@
 * [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
 <!-- default file list end -->
 # ASPxGridView - How to bind a combobox column based on a row index in Batch Edit mode
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t190978/)**
+<!-- run online end -->
 
 
 <p>The attached example illustrates how to populate GridViewDataComboBoxColumn at runtime when ASPxGridView is used in Batch Edit mode.</p>
