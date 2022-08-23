@@ -30,7 +30,7 @@ To overcome this limitation, use the combo box editor's callback to populate the
    }
    ```
 
-2. Call the combo box editor's PerformCallback method from the client [`ASPxClientGridView.BatchEditStartEditing`](https://documentation.devexpress.com/AspNet/DevExpressWebASPxGridViewScriptsASPxClientGridView_BatchEditStartEditingtopic.aspx) event handler. Pass the current row's visible index as the callback parameter:
+2. Call the combo box editor's [`PerformCallback`](https://docs.devexpress.com/AspNet/js-ASPxClientComboBox.PerformCallback(parameter)) method from the client [`ASPxClientGridView.BatchEditStartEditing`](https://documentation.devexpress.com/AspNet/DevExpressWebASPxGridViewScriptsASPxClientGridView_BatchEditStartEditingtopic.aspx) event handler. Pass the current row's visible index as the callback parameter:
 
    ```aspx
    <dx:ASPxGridView ID="Grid" runat="server" KeyFieldName="ID" ... >
