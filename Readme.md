@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T190978)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-# Grid View for ASP.NET Web Forms - How to bind a Combo Box column to data in batch edit mode
+# Grid View for ASP.NET Web Forms - How to bind a Combo Box column to data based on the row index in batch edit mode
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/t190978/)**
 <!-- run online end -->
