@@ -11,7 +11,7 @@
 <!-- default file list end -->
 # ASPxGridView - How to bind a combobox column based on a row index in Batch Edit mode
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t190978/)**
+**[[Run Online]](https://codecentral.devexpress.com/128533398/)**
 <!-- run online end -->
 
 
