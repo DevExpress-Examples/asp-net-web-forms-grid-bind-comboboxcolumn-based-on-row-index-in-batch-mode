@@ -3,21 +3,67 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T190978)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
-
-* **[Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))**
-* [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
-<!-- default file list end -->
-# ASPxGridView - How to bind a combobox column based on a row index in Batch Edit mode
+# Grid View for ASP.NET Web Forms - How to bind a Combo Box column to data based on the row index in batch edit mode
 <!-- run online -->
 **[[Run Online]](https://codecentral.devexpress.com/128533398/)**
 <!-- run online end -->
 
 
-<p>The attached example illustrates how to populate GridViewDataComboBoxColumn at runtime when ASPxGridView is used in Batch Edit mode.</p>
-<p>The technique of completing this task in a batch grid differs from the approach used for a grid in standard mode. When the grid is used in Batch edit mode, ASPxGridView performs all operations on the client side. Therefore, it's not possible to populate the combo box located in each row using the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxGridView_CellEditorInitializetopic">CellEditorInitialize</a> event handler.<br />As a solution, the combo box can be populated on its callback.<br />This scenario requires the following steps:<br />1) Add the combo box' Callback event handler in the grid's <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebASPxGridView_CellEditorInitializetopic">CellEditorInitialize</a> event handler.<br />2) Initiate a callback to the combo box by calling its PerformCallback method in the client-side <a href="https://documentation.devexpress.com/AspNet/DevExpressWebASPxGridViewScriptsASPxClientGridView_BatchEditStartEditingtopic.aspx">ASPxClientGridView.BatchEditStartEditing</a> event handler. Pass a row's visible index obtained via e.visibleIndex as a parameter of this method.<br />3) Add required items to the combo box in its server-side Callback event handler. You can get the current row index from the callback parameter (e.Parameter).</p>
+This example demonstrates how to populate a [GridViewDataComboBoxColumn](https://docs.devexpress.com/AspNet/DevExpress.Web.GridViewDataComboBoxColumn)'s cell editors at runtime in batch edit mode.
 
-<br/>
+![Bind Combo Box Column in Batch Edit Mode](bind-combobox-column.png)
 
+## Implementation Details
 
+In batch edit mode, the Grid View does not send requests to the server when a cell editor is activated. Therefore, it is not possible to use the [`CellEditorInitialize`](https://documentation.devexpress.com/#AspNet/DevExpressWebASPxGridView_CellEditorInitializetopic) event handler on the server to populate a combo box in each row.
+
+To overcome this limitation, use the combo box editor's callback to populate the editor with items.
+
+1. Handle the grid's [`CellEditorInitialize`](https://documentation.devexpress.com/#AspNet/DevExpressWebASPxGridView_CellEditorInitializetopic) event. In the event handler, assign a new handler to the combo box cell editor's [`Callback`](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxAutoCompleteBoxBase.Callback) event:
+
+   ```cs
+   protected void Grid_CellEditorInitialize(object sender, ASPxGridViewEditorEventArgs e) {
+       if (e.Column.FieldName == "C3") {
+           ASPxComboBox combo = e.Editor as ASPxComboBox;
+           combo.Callback += combo_Callback;
+       }
+   }
+   ```
+
+2. Call the combo box editor's [`PerformCallback`](https://docs.devexpress.com/AspNet/js-ASPxClientComboBox.PerformCallback(parameter)) method from the client [`ASPxClientGridView.BatchEditStartEditing`](https://documentation.devexpress.com/AspNet/DevExpressWebASPxGridViewScriptsASPxClientGridView_BatchEditStartEditingtopic.aspx) event handler. Pass the current row's visible index as the callback parameter:
+
+   ```aspx
+   <dx:ASPxGridView ID="Grid" runat="server" KeyFieldName="ID" ... >
+       ...
+       <ClientSideEvents 
+           BatchEditStartEditing="function(s, e){ cmb.PerformCallback(e.visibleIndex); }" 
+       />
+   </dx:ASPxGridView>
+   ```
+
+3. Add items to the combo box in the [`Callback`](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxAutoCompleteBoxBase.Callback) event handler. You can get the current row index from `e.Parameter`. 
+
+   ```cs
+   void combo_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e) {
+       ASPxComboBox combo = sender as ASPxComboBox;
+       for (int i = 0; i < 10; i++) {
+           combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i));
+       }
+   }
+   ```
+
+## Files to Look At
+
+- [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
+- [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
+
+## Documentation
+
+- [Passing Values Between Client and Server Sides](https://docs.devexpress.com/AspNet/11816/common-concepts/client-side-functionality/passing-values-between-client-and-server-sides)
+- [Batch Edit Mode](https://docs.devexpress.com/AspNet/16443/components/grid-view/concepts/edit-data/batch-edit-mode)
+- [Edit Cells](https://docs.devexpress.com/AspNet/3704/components/grid-view/concepts/data-representation-basics/cells/cells-overview#edit-cells)
+
+## More Examples
+
+- [Grid View for ASP.NET Web Forms - How to bind the GridViewDataComboBoxColumn edit form editor at runtime](https://github.com/DevExpress-Examples/aspxgridview-bind-comboboxcolumn-edit-form-editor-at-runtime)
+- [Grid View for ASP.NET Web Forms - How to cache data on the client](https://github.com/DevExpress-Examples/aspxgridview-cache-data-on-the-client-side)
