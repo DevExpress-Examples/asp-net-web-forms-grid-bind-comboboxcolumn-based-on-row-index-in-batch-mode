@@ -9,7 +9,7 @@
 <!-- run online end -->
 
 
-This example demonstrates how to populate a [GridViewDataComboBoxColumn](https://docs.devexpress.com/AspNet/DevExpress.Web.GridViewDataComboBoxColumn)'s cell editors at run time in batch edit mode.
+This example demonstrates how to populate a [GridViewDataComboBoxColumn](https://docs.devexpress.com/AspNet/DevExpress.Web.GridViewDataComboBoxColumn)'s cell editors at runtime in batch edit mode.
 
 ![Bind Combo Box Column in Batch Edit Mode](bind-combobox-column.png)
 
