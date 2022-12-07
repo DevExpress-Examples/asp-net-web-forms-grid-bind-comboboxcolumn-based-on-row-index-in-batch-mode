@@ -5,8 +5,7 @@ Imports System.Collections.Specialized
 Imports System.ComponentModel
 Imports System.Linq
 Imports DevExpress.Web.Data
-Imports DevExpress.Web.ASPxGridView
-Imports DevExpress.Web.ASPxEditors
+Imports DevExpress.Web
 
 Partial Public Class _Default
 	Inherits System.Web.UI.Page
@@ -134,7 +133,7 @@ Partial Public Class _Default
 		End If
 	End Sub
 
-	Private Sub combo_Callback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxClasses.CallbackEventArgsBase)
+	Private Sub combo_Callback(ByVal sender As Object, ByVal e As DevExpress.Web.CallbackEventArgsBase)
 		Dim combo As ASPxComboBox = TryCast(sender, ASPxComboBox)
 		For i As Integer = 0 To 9
 			combo.Items.Add(String.Format("Row_{0} Item_{1}", e.Parameter, i))

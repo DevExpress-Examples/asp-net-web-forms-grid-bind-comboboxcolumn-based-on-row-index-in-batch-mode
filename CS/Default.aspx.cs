@@ -4,8 +4,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using DevExpress.Web.Data;
-using DevExpress.Web.ASPxGridView;
-using DevExpress.Web.ASPxEditors;
+using DevExpress.Web;
 
 public partial class _Default : System.Web.UI.Page {
     protected List<GridDataItem> GridData {
@@ -93,7 +92,7 @@ public partial class _Default : System.Web.UI.Page {
         }
     }
 
-    void combo_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e) {
+    void combo_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e) {
         ASPxComboBox combo = sender as ASPxComboBox;
         for (int i = 0; i < 10; i++) {
             combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i));
