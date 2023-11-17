@@ -94,8 +94,9 @@ public partial class _Default : System.Web.UI.Page {
 
     void combo_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e) {
         ASPxComboBox combo = sender as ASPxComboBox;
-        for (int i = 0; i < 10; i++) {
-            combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i));
+        for (int i = 0; i < 10; i++)
+        {
+            combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i), i);
         }
     }
 }

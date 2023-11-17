@@ -1,12 +1,21 @@
 ﻿
 <%@ Page Language="vb" AutoEventWireup="true" CodeFile="Default.aspx.vb" Inherits="_Default" %>
-<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.15.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+<%@ Register Assembly="DevExpress.Web.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
 	Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 	<title></title>
+	<script type="text/javascript">
+		function OnBatchEditStartEditing(s, e) {
+			cmb.PerformCallback(e.visibleIndex);
+		}
+
+		function OnEndCallback(s, e) {
+			s.SetValue(s.GetValue());
+		}
+	</script>
 </head>
 <body>
 	<form id="frmMain" runat="server">
@@ -19,11 +28,13 @@
 			<dx:GridViewDataColumn FieldName="C1" />
 			<dx:GridViewDataSpinEditColumn FieldName="C2" />
 			<dx:GridViewDataComboBoxColumn FieldName="C3" >
-				<PropertiesComboBox ClientInstanceName="cmb" ></PropertiesComboBox>
+				<PropertiesComboBox ClientInstanceName="cmb">
+					<ClientSideEvents EndCallback="OnEndCallback" />
+				</PropertiesComboBox>
 			</dx:GridViewDataComboBoxColumn>
 			<dx:GridViewDataCheckColumn FieldName="C4" />
 		</Columns>
-		<ClientSideEvents BatchEditStartEditing="function(s, e){ cmb.PerformCallback(e.visibleIndex); }" />
+		<ClientSideEvents BatchEditStartEditing="OnBatchEditStartEditing" />
 		<SettingsEditing Mode="Batch" />
 	</dx:ASPxGridView>
 	</form>

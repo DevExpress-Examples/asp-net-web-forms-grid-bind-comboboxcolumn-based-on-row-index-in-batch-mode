@@ -136,7 +136,7 @@ Partial Public Class _Default
 	Private Sub combo_Callback(ByVal sender As Object, ByVal e As DevExpress.Web.CallbackEventArgsBase)
 		Dim combo As ASPxComboBox = TryCast(sender, ASPxComboBox)
 		For i As Integer = 0 To 9
-			combo.Items.Add(String.Format("Row_{0} Item_{1}", e.Parameter, i))
+			combo.Items.Add(String.Format("Row_{0} Item_{1}", e.Parameter, i), i)
 		Next i
 	End Sub
 End Class

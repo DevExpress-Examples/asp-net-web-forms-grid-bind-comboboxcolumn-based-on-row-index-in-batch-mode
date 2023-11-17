@@ -1,23 +1,26 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", ".", "{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34205.153
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "VB", ".", "{E7100136-FDA4-46DF-B114-8F6ECC7C2DF8}"
 	ProjectSection(WebsiteProperties) = preProject
-        TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/WebSite"
-		Debug.AspNetCompiler.PhysicalPath = "."
+		Debug.AspNetCompiler.PhysicalPath = "..\VB\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/WebSite"
-		Release.AspNetCompiler.PhysicalPath = "."
+		Release.AspNetCompiler.PhysicalPath = "..\VB\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\WebSite\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "2101"
+		SlnRelativePath = "..\VB\"
 	EndProjectSection
 EndProject
 Global
@@ -30,5 +33,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61C74AA0-4187-4D9D-B24E-F4CA27C759C9}
 	EndGlobalSection
 EndGlobal
