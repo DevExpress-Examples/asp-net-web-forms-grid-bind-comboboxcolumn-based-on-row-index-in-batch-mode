@@ -35,24 +35,28 @@ To overcome this limitation, use the combo box editor's callback to populate the
    ```aspx
    <dx:ASPxGridView ID="Grid" runat="server" KeyFieldName="ID" ... >
        ...
-       <ClientSideEvents 
-           BatchEditStartEditing="function(s, e){ cmb.PerformCallback(e.visibleIndex); }" 
-       />
+       <ClientSideEvents BatchEditStartEditing="OnBatchEditStartEditing" />
    </dx:ASPxGridView>
    ```
 
+   ```jscript
+   function OnBatchEditStartEditing(s, e) {
+       cmb.PerformCallback();
+   }
+   ```
+   
 3. Add items to the combo box in the [Callback](https://docs.devexpress.com/AspNet/DevExpress.Web.ASPxAutoCompleteBoxBase.Callback) event handler. You can get the current row index from `e.Parameter`. 
 
    ```cs
-   void combo_Callback(object sender, DevExpress.Web.ASPxClasses.CallbackEventArgsBase e) {
+   void combo_Callback(object sender, DevExpress.Web.CallbackEventArgsBase e) {
        ASPxComboBox combo = sender as ASPxComboBox;
        for (int i = 0; i < 10; i++) {
-           combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i));
+           combo.Items.Add(string.Format("Row_{0} Item_{1}", e.Parameter, i), i);
        }
    }
    ```
 
-## Files to Look At
+## Files to Review
 
 - [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/Default.aspx))
 - [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/Default.aspx.vb))
