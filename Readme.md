@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # Grid View for ASP.NET Web Forms - How to bind a Combo Box column to data based on the row index in batch edit mode
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/128533398/)**
-<!-- run online end -->
 
 
 This example demonstrates how to populate a [GridViewDataComboBoxColumn](https://docs.devexpress.com/AspNet/DevExpress.Web.GridViewDataComboBoxColumn)'s cell editors at runtime in batch edit mode.
